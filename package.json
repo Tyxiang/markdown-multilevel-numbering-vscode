@@ -1,0 +1,81 @@
+{
+  "name": "markdown-multilevel-numbering",
+  "version": "1.1.6",
+  "publisher": "forwcc",
+  "description": "VS Code extension for markdown multilevel numbering",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tyx/markdown-multilevel-numbering.git"
+  },
+  "type": "module",
+  "main": "dist/extension.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "vscode:prepublish": "npm run build",
+    "vscode:package": "vsce package"
+  },
+  "keywords": [
+    "markdown",
+    "numbering",
+    "vscode"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "markdown-multilevel-numbering": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.5",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.7.3",
+    "vsce": "^2.15.0",
+    "vitest": "^2.1.0"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage:markdown"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "mmn.update",
+        "title": "Update"
+      },
+      {
+        "command": "mmn.remove",
+        "title": "Remove"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "submenu": "mmn.submenu",
+          "when": "editorLangId == markdown",
+          "group": "9_mmn"
+        }
+      ],
+      "mmn.submenu": [
+        {
+          "command": "mmn.update"
+        },
+        {
+          "command": "mmn.remove"
+        }
+      ]
+    },
+    "submenus": [
+      {
+        "id": "mmn.submenu",
+        "label": "Markdown Multilevel Numbering"
+      }
+    ]
+  }
+}
