@@ -215,11 +215,11 @@ Output:
 
 ## 4. Installation
 
-**Install from VS Code Extension Marketplace**
+***Install from VS Code Extension Marketplace***
 
 Search for "Markdown Multilevel Numbering" in the VS Code extension marketplace and install.
 
-**Install from VSIX file**
+***Install from VSIX file***
 
 1. Download the .vsix file
 2. In VS Code, press `Ctrl+Shift+P` to open the command palette
