@@ -16,7 +16,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "vscode:prepublish": "npm run build",
-    "vscode:package": "vsce package"
+    "vscode:package": "vsce package -o release/"
   },
   "keywords": [
     "markdown",
@@ -64,10 +64,10 @@
       ],
       "mmn.submenu": [
         {
-          "command": "mmn.remove"
+          "command": "mmn.update"
         },
         {
-          "command": "mmn.update"
+          "command": "mmn.remove"
         }
       ]
     },
