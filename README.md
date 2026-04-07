@@ -1,220 +1,229 @@
 # Markdown Multilevel Numbering (mmn)
 
-这是一个给 markdown 文档添加多级编号的工具，支持正文/附录两种编号模式，可通过指令灵活控制编号模式、深度。基于 [Markdown Multilevel Numbering](https://github.com/tyxiang/markdown-multilevel-numbering-core) 库开发。
+[English](./README.md) | [中文](./README_CN.md)
 
-## 1. 功能特性
+A tool for adding multilevel numbering to markdown documents, supporting mainbody/appendix numbering modes with flexible control via commands. Built on the [Markdown Multilevel Numbering](https://github.com/tyxiang/markdown-multilevel-numbering-core) library.
 
-- 正文模式标题和段落的编号：`1.`, `1.1.`, `1.1.1.` ...
-- 附录模式标题和段落的编号：`A.`, `A.1.`, `A.1.1.` ...
-- 附录的 H2 标题格式：`附录 A 标题`。
-- 通过控制指令灵活改变编号行为。
-- 一级标题永远不会参与编号。
-- 只处理第一个一级标题逻辑范围内的内容，后续一级标题及其内容将被忽略。
-- 基于 AST 的可靠解析，保护代码块、列表、表格、数学公式等内容不被误改。
+## 1. Features
 
-## 2. 控制指令
+- Mainbody mode numbering for headings and paragraphs: `1.`, `1.1.`, `1.1.1.` ...
+- Appendix mode numbering for headings and paragraphs: `A.`, `A.1.`, `A.1.1.` ...
+- H2 heading format in appendix: `Appendix A Title`.
+- Flexible control of numbering behavior via commands.
+- Level 1 headings never participate in numbering.
+- Only processes content within the first level 1 heading scope; subsequent level 1 headings and their content are ignored.
+- AST-based reliable parsing protects code blocks, lists, tables, math formulas, etc. from being modified.
 
-在 markdown 文档中用 HTML 注释方式插入控制指令来控制编号行为。
+## 2. Control Commands
 
-注释格式：`<!-- mmn: command [command...] -->`
+Insert control commands in markdown documents using HTML comments.
 
-| command    | 功能描述                                               |
+Comment format: `<!-- mmn: command [command...] -->`
+
+| command    | Description                                             |
 | ---------- | ------------------------------------------------------ |
-| `mainbody` | 编号模式指令，以默认值开始正文模式编号，深度默认为 `h` |
-| `appendix` | 编号模式指令，以默认值开始附录模式编号，深度默认为 `h` |
-| `h`        | 编号深度指令，给所有级别标题编号                       |
-| `h+p`      | 编号深度指令，给所有级别标题、段落编号                 |
-| `h2`       | 编号深度指令，给 2 级标题编号                          |
-| `h3`       | 编号深度指令，给 2~3 级标题编号                        |
-| `h4`       | 编号深度指令，给 2~4 级标题编号                        |
-| `h5`       | 编号深度指令，给 2~5 级标题编号                        |
-| `h6`       | 编号深度指令，给 2~6 级标题编号                        |
-| `end`      | 结束编号                                               |
+| `mainbody` | Numbering mode command, starts mainbody mode with default depth `h` |
+| `appendix` | Numbering mode command, starts appendix mode with default depth `h` |
+| `h`        | Depth command, numbers all heading levels              |
+| `h+p`      | Depth command, numbers all heading levels and paragraphs |
+| `h2`       | Depth command, numbers level 2 headings               |
+| `h3`       | Depth command, numbers level 2-3 headings            |
+| `h4`       | Depth command, numbers level 2-4 headings            |
+| `h5`       | Depth command, numbers level 2-5 headings            |
+| `h6`       | Depth command, numbers level 2-6 headings            |
+| `end`      | End numbering                                         |
 
-程序启动后，默认以 `mainbody` 模式开始编号。
+The program starts in `mainbody` mode by default.
 
-## 3. 使用示例
+## 3. Usage Examples
 
-### 3.1. 示例 1：基本标题编号
+### 3.1. Example 1: Basic Heading Numbering
 
-输入：
+Input:
 
 ```markdown
-# 文档标题
+# Document Title
 
 <!-- mmn: mainbody h -->
 
-## 引言
+## Introduction
 
-## 方法
+## Methods
 
-### 实验设计
+### Experiment Design
 
-### 数据分析
+### Data Analysis
 
-## 结论
+## Conclusion
 ```
 
-输出：
+Output:
 
 ```markdown
-# 文档标题
+# Document Title
 
 <!-- mmn: mainbody h -->
 
-## 1. 引言
+## 1. Introduction
 
-## 2. 方法
+## 2. Methods
 
-### 2.1. 实验设计
+### 2.1. Experiment Design
 
-### 2.2. 数据分析
+### 2.2. Data Analysis
 
-## 3. 结论
+## 3. Conclusion
 ```
 
-### 3.2. 示例 2：标题 + 段落编号
+### 3.2. Example 2: Heading + Paragraph Numbering
 
-输入：
+Input:
 
 ```markdown
-# 文档标题
+# Document Title
 
 <!-- mmn: mainbody h+p -->
 
-## 引言
+## Introduction
 
-这是第一段。
+This is the first paragraph.
 
-这是第二段。
+This is the second paragraph.
 
-## 方法
+## Methods
 
-### 实验设计
+### Experiment Design
 
-实验步骤如下。
+The experiment steps are as follows.
 
-具体细节说明。
+Detailed explanations.
 ```
 
-输出：
+Output:
 
 ```markdown
-# 文档标题
+# Document Title
 
 <!-- mmn: mainbody h+p -->
 
-## 1. 引言
+## 1. Introduction
 
-1.1. 这是第一段。
+1.1. This is the first paragraph.
 
-1.2. 这是第二段。
+1.2. This is the second paragraph.
 
-## 2. 方法
+## 2. Methods
 
-### 2.1. 实验设计
+### 2.1. Experiment Design
 
-2.1.1. 实验步骤如下。
+2.1.1. The experiment steps are as follows.
 
-2.1.2. 具体细节说明。
+2.1.2. Detailed explanations.
 ```
 
-### 3.3. 示例 4：动态调整编号深度
+### 3.3. Example 3: Dynamic Depth Adjustment
 
-输入：
+Input:
 
 ```markdown
-# 文档标题
+# Document Title
 
 <!-- mmn: mainbody h2 -->
 
-## 概述
+## Overview
 
-### 这个三级标题不会编号
+### This level 3 heading won't be numbered
 
-### 这个也不会
+### Neither will this one
 
 <!-- mmn: h -->
 
-## 正文
+## Main Content
 
-### 现在开始编号了
+### Now numbering starts
 
-#### 四级标题也会编号
+#### Level 4 headings will also be numbered
 
-内容不会被编号。
+Content won't be numbered.
 ```
 
-输出：
+Output:
 
 ```markdown
-# 文档标题
+# Document Title
 
 <!-- mmn: mainbody h2 -->
 
-## 1. 概述
+## 1. Overview
 
-### 这个三级标题不会编号
+### This level 3 heading won't be numbered
 
-### 这个也不会
+### Neither will this one
 
 <!-- mmn: h -->
 
-## 2. 正文
+## 2. Main Content
 
-### 2.1. 现在开始编号了
+### 2.1. Now numbering starts
 
-#### 2.1.1. 四级标题也会编号
+#### 2.1.1. Level 4 headings will also be numbered
 
-但内容不会被编号。
+Content won't be numbered.
 ```
 
-### 3.4. 示例 3：正文 + 附录混合
+### 3.4. Example 4: Mainbody + Appendix Mixed
 
-输入：
+Input:
 
 ```markdown
-# 文档标题
+# Document Title
 
 <!-- mmn: mainbody h -->
 
-## 引言
+## Introduction
 
-## 方法
+## Methods
 
 <!-- mmn: appendix h -->
 
-## 补充材料
+## Supplementary Materials
 
-### 原始数据
+### Raw Data
 
-## 调查问卷
+## Questionnaire
 ```
 
-输出：
+Output:
 
 ```markdown
-# 文档标题
+# Document Title
 
 <!-- mmn: mainbody h -->
 
-## 1. 引言
+## 1. Introduction
 
-## 2. 方法
+## 2. Methods
 
 <!-- mmn: appendix h -->
 
-## 附录 A 补充材料
+## Appendix A Supplementary Materials
 
-### A.1. 原始数据
+### A.1. Raw Data
 
-## 附录 B 调查问卷
+## Appendix B Questionnaire
 ```
 
-## 4. 安装
+## 4. Installation
 
-## 5. 使用
+### Option 1: Install from VS Code Extension Marketplace
+Search for "Markdown Multilevel Numbering" in the VS Code extension marketplace and install.
 
-- 打开 .md 文件。
-- 在右键菜单中找到 "Markdown Multilevel Numbering" 选择 "Update" 或 "Remove"。
+### Option 2: Install from VSIX file
+1. Download the .vsix file
+2. In VS Code, press `Ctrl+Shift+P` to open the command palette
+3. Type "Install from VSIX" and select the downloaded .vsix file
 
+## 5. Usage
+
+- Open a .md file.
+- Right-click to find "Markdown Multilevel Numbering" submenu and choose "Update" or "Remove".
