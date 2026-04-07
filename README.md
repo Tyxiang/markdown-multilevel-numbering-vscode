@@ -20,18 +20,18 @@ Insert control commands in markdown documents using HTML comments.
 
 Comment format: `<!-- mmn: command [command...] -->`
 
-| command    | Description                                             |
-| ---------- | ------------------------------------------------------ |
+| command    | Description                                                         |
+| ---------- | ------------------------------------------------------------------- |
 | `mainbody` | Numbering mode command, starts mainbody mode with default depth `h` |
 | `appendix` | Numbering mode command, starts appendix mode with default depth `h` |
-| `h`        | Depth command, numbers all heading levels              |
-| `h+p`      | Depth command, numbers all heading levels and paragraphs |
-| `h2`       | Depth command, numbers level 2 headings               |
-| `h3`       | Depth command, numbers level 2-3 headings            |
-| `h4`       | Depth command, numbers level 2-4 headings            |
-| `h5`       | Depth command, numbers level 2-5 headings            |
-| `h6`       | Depth command, numbers level 2-6 headings            |
-| `end`      | End numbering                                         |
+| `h`        | Depth command, numbers all heading levels                           |
+| `h+p`      | Depth command, numbers all heading levels and paragraphs            |
+| `h2`       | Depth command, numbers level 2 headings                             |
+| `h3`       | Depth command, numbers level 2-3 headings                           |
+| `h4`       | Depth command, numbers level 2-4 headings                           |
+| `h5`       | Depth command, numbers level 2-5 headings                           |
+| `h6`       | Depth command, numbers level 2-6 headings                           |
+| `end`      | End numbering                                                       |
 
 The program starts in `mainbody` mode by default.
 
@@ -215,10 +215,12 @@ Output:
 
 ## 4. Installation
 
-### Option 1: Install from VS Code Extension Marketplace
+**Install from VS Code Extension Marketplace**
+
 Search for "Markdown Multilevel Numbering" in the VS Code extension marketplace and install.
 
-### Option 2: Install from VSIX file
+**Install from VSIX file**
+
 1. Download the .vsix file
 2. In VS Code, press `Ctrl+Shift+P` to open the command palette
 3. Type "Install from VSIX" and select the downloaded .vsix file

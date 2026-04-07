@@ -215,11 +215,11 @@
 
 ## 4. 安装
 
-### 4.1. 从 VS Code 扩展市场安装
+**从 VS Code 扩展市场安装**
 
 在 VS Code 扩展市场搜索 "Markdown Multilevel Numbering" 并安装。
 
-### 4.2. 从 VSIX 文件安装
+**从 VSIX 文件安装**
 
 1. 下载 .vsix 文件
 2. 在 VS Code 中按 `Ctrl+Shift+P` 打开命令面板
