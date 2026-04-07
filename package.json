@@ -1,6 +1,6 @@
 {
   "name": "markdown-multilevel-numbering",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "publisher": "forwcc",
   "description": "VS Code extension for markdown multilevel numbering",
   "icon": "icon/icon.png",
@@ -64,10 +64,10 @@
       ],
       "mmn.submenu": [
         {
-          "command": "mmn.update"
+          "command": "mmn.remove"
         },
         {
-          "command": "mmn.remove"
+          "command": "mmn.update"
         }
       ]
     },
