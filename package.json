@@ -1,6 +1,6 @@
 {
   "name": "markdown-multilevel-numbering",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "publisher": "forwcc",
   "description": "VS Code extension for markdown multilevel numbering",
   "icon": "icon/icon.png",
@@ -25,7 +25,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "markdown-multilevel-numbering": "^1.1.8"
+    "markdown-multilevel-numbering": "^1.1.9"
   },
   "devDependencies": {
     "@types/node": "^22.10.5",
