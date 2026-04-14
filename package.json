@@ -64,10 +64,12 @@
       ],
       "mmn.submenu": [
         {
-          "command": "mmn.update"
+          "command": "mmn.update",
+          "group": "mmn@1"
         },
         {
-          "command": "mmn.remove"
+          "command": "mmn.remove",
+          "group": "mmn@2"
         }
       ]
     },
